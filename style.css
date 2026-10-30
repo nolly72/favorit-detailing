@@ -1,0 +1,5 @@
+body { font-family: 'Cormorant Garamond', serif; background: #080c14; }
+.active-tag { border-color: #e5c158 !important; color: #fff !important; background: rgba(229,193,88,0.05); }
+@keyframes fI { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sU { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes zI { from { transform: scale(0.97); opacity: 0; } to { transform: scale(1); opacity: 1; } }
