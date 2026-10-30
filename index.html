@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Favorit</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;scroll-behavior:smooth;}
+        body {background:#0b0c10;color:#c5c6c7;line-height:1.4;padding:0 20px;} .container {max-width:1200px;margin:0 auto;}
+        header {background:#1f2833;padding:12px 0;border-bottom:2px solid #66fcf1;position:sticky;top:0;z-index:100;}
+        .h-content {display:flex;justify-content:space-between;align-items:center;} .logo {font-size:22px;font-weight:bold;color:#fff;text-decoration:none;}
+        .logo span,nav a:hover {color:#66fcf1;} nav a {color:#c5c6c7;text-decoration:none;margin-left:15px;font-weight:500;}
+        .hero {padding:30px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+        .hero-text {flex:1;min-width:280px;} .hero-text h1 {font-size:32px;color:#fff;margin-bottom:10px;}
+        .hero-text p {font-size:15px;margin-bottom:10px;color:#45f3ff;}
+        .hero-img {flex:1;min-width:280px;height:280px;background:#1f2833;border:2px dashed #66fcf1;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+        .hero-img img {width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2;filter:brightness(0.6);}
+        .img-plh {color:#66fcf1;font-size:13px;z-index:1;text-align:center;}
+        .features {padding:30px 0;background:#11141a;border-radius:12px;margin:15px 0;} .sec-title {text-align:center;font-size:24px;color:#fff;margin-bottom:20px;}
+        .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;padding:0 15px;}
+        .card {background:#1f2833;padding:20px;border-radius:8px;border-left:4px solid #66fcf1;} .card h3 {color:#fff;margin-bottom:5px;font-size:18px;}
+        .foam-sec {padding:30px 0;display:flex;flex-direction:column;align-items:center;}
+        .win-box {position:relative;width:100%;max-width:800px;height:300px;border-radius:12px;overflow:hidden;border:2px solid #1f2833;}
+        .glass {position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#15181f,#050608);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center;user-select:none;}
+        .glass h2 {color:#66fcf1;margin-bottom:10px;font-size:20px;} #foamCanvas {position:absolute;width:100%;height:100%;cursor:pointer;z-index:10;top:0;left:0;}
+        .hint {margin-top:8px;color:#66fcf1;font-size:12px;font-style:italic;} .booking {padding:30px 0;background:#11141a;border-radius:12px;}
+        .b-form {max-width:400px;margin:0 auto;background:#1f2833;padding:20px;border-radius:12px;} .f-group {margin-bottom:12px;}
+        .f-group label {display:block;margin-bottom:3px;color:#fff;font-size:13px;}
+        .f-group input,.f-group select {width:100%;padding:9px;background:#0b0c10;border:1px solid #45f3ff;border-radius:6px;color:#fff;font-size:14px;}
+        .btn {width:100%;background:#66fcf1;color:#0b0c10;border:none;padding:12px;font-size:15px;font-weight:bold;border-radius:6px;cursor:pointer;}
+        footer {text-align:center;padding:20px 0;font-size:12px;color:#666;border-top:1px solid #1f2833;margin-top:20px;}
+    </style>
+</head>
+<body>
+    <header><div class="container h-content"><a href="#about" class="logo">FAVORIT<span>.</span></a><nav><a href="#about">О нас</a><a href="#features">Принципы</a><a href="#booking">Запись</a></nav></div></header>
+    <section class="container hero" id="about">
+        <div class="hero-text"><h1>Студия детейлинга <span style="color:#66fcf1">Favorit</span></h1><p>Премиальный уход. Локальный бокс, высокое качество.</p><p style="color:#888;font-size:13px;">📍 Индивидуальный бокс на 1 авто.</p></div>
+        <div class="hero-img"><div class="img-plh">Фото: main.jpg</div><img src="main.jpg" alt="Favorit"></div>
+    </section>
+    <section class="features" id="features"><div class="container"><h2 class="sec-title">Принципы</h2><div class="grid"><div class="card"><h3>Бережность</h3><p>Относимся к каждому авто аккуратно, как к своему.</p></div><div class="card"><h3>Качество</h3><p>Используем только проверенные премиальные составы.</p></div><div class="card"><h3>1 машина</h3><p>Всё внимание мастера только на ваш автомобиль.</p></div></div></div></section>
+    <section class="container foam-sec">
+        <h2 class="sec-title">Процесс</h2>
+        <div class="win-box">
+            <div class="glass"><h2>Что мы делаем:</h2><p>Деликатная химчистка, полировка кузова и фар, нанесение жидкого стекла и керамики. Возвращаем машине вид новой.</p></div>
+            <canvas id="foamCanvas"></canvas>
+        </div><p class="hint">👆 Сотрите пену мышкои или пальцем</p>
+    </section>
+    <section class="booking" id="booking"><div class="container"><h2 class="sec-title">Запись</h2><div class="b-form"><form id="orderForm"><div class="f-group"><label>Имя</label><input type="text" required></div><div class="f-group"><label>Телефон</label><input type="tel" required></div><div class="f-group"><label>Услуга</label><select><option>Химчистка</option><option>Полировка кузова</option><option>Керамика</option></select></div><div class="f-group"><label>Автомобиль</label><input type="text" required></div><button type="submit" class="btn">Записаться</button></form></div></div></section>
+    <footer><p>&copy; 2026 Favorit Detailing.</p></footer>
+    <script>
+        const canvas = document.getElementById('foamCanvas'), ctx = canvas.getContext('2d'); let isDrawing = false;
+        function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; draw(); }
+        function draw() { ctx.fillStyle = '#eef2f5'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = 'rgba(255,255,255,0.6)'; for(let i=0;i<25;i++){ctx.beginPath(); ctx.arc(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*20+10,0,Math.PI*2); ctx.fill();} }
+        function scratch(e) { if(!isDrawing) return; const rect = canvas.getBoundingClientRect(), x = (e.clientX || e.touches.clientX) - rect.left, y = (e.clientY || e.touches.clientY) - rect.top; ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(x,y,30,0,Math.PI*2); ctx.fill(); }
+        canvas.addEventListener('mousedown', () => isDrawing = true); canvas.addEventListener('mouseup', () => isDrawing = false); canvas.addEventListener('mousemove', scratch);
+        canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }); canvas.addEventListener('touchend', () => isDrawing = false); canvas.addEventListener('touchmove', (e) => { e.preventDefault(); scratch(e); }, { passive: false });
+        window.addEventListener('load', resize); window.addEventListener('resize', resize);
+        document.getElementById('orderForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Заявка принята!'); this.reset(); });
+    </script>
+</body>
+</html>
