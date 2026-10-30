@@ -2,93 +2,49 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Favorit Detailing</title>
-    <script src="https://jsdelivr.net"></script>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com"><link rel="preconnect" href="https://gstatic.com" crossorigin><link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-gray-300 px-8 opacity-0 animate-[fI_1.2s_ease_forwards]">
-    <header class="sticky top-0 z-50 bg-[#080c14]/70 backdrop-blur-md border-b border-white/5 py-5">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#about" class="text-2xl tracking-[5px] text-white font-light">FAVORIT<span class="text-[#e5c158]">.</span></a>
-            <nav class="font-sans text-xs tracking-widest uppercase flex gap-6"><a href="#about" class="hover:text-[#e5c158] transition">О нас</a><a href="#features" class="hover:text-[#e5c158] transition">Принципы</a><a href="#booking" class="hover:text-[#e5c158] transition">Запись</a></nav>
-        </div>
-    </header>
-    <section class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-10 py-20" id="about">
-        <div class="flex-1 min-w-[320px] animate-[sU_1s_ease_forwards]">
-            <h1 class="text-5xl md:text-6xl font-light text-white mb-6 leading-tight">Место, где автомобили обретают <span class="text-[#e5c158]">первозданный вид.</span></h1>
-            <p class="text-2xl text-[#e5c158] italic">Премиальное качество детейлинга в приватном боксе.</p>
-        </div>
-        <div class="flex-[1.5] min-w-[320px] md:min-w-[450px] h-[450px] md:h-[550px] bg-gray-900 rounded-[60px_20px] relative overflow-hidden shadow-2xl border border-[#e5c158]/15 group animate-[zI_1s_ease_forwards]">
-            <div class="absolute inset-0 flex items-center justify-center text-[#e5c158] font-sans text-sm z-10 bg-[#080c14]/50 group-hover:opacity-0 transition">Фото: main.jpg</div>
-            <img src="main.jpg" alt="Favorit" class="w-full h-full object-cover filter brightness-[0.65] group-hover:brightness-90 group-hover:scale-105 transition duration-1000">
-        </div>
+<body>
+    <header class="wrap"><a href="#about" class="logo">FAVORIT<span>.</span></a><nav><a href="#about">О нас</a><a href="#features">Принципы</a><a href="#booking">Запись</a></nav></header>
+    <section class="wrap hero" id="about">
+        <div class="hero-txt"><h1>Место, где автомобили обретают <span style="color:#e5c158">первозданный вид.</span></h1><p>Премиальное качество детейлинга в приватном боксе.</p></div>
+        <div class="hero-img"><div class="img-plh">Фото: main.jpg</div><img src="main.jpg" alt="Favorit Detailing"></div>
     </section>
-    <section class="bg-[#0b111e] rounded-[40px] py-16 my-10" id="features">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-center text-4xl font-light text-white mb-12 tracking-wide">Философия ухода</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-[#080c14] p-10 rounded-3xl border border-white/5 hover:border-[#e5c158]/30 transition">
-                    <h3 class="text-white text-2xl font-light mb-4">Бережное отношение</h3>
-                    <p class="font-sans text-sm text-gray-400 font-light">Мы не признаем спешки. Каждая деталь кузова и салона обрабатывается с абсолютной точностью.</p>
-                </div>
-                <div class="bg-[#080c14] p-10 rounded-3xl border border-white/5 hover:border-[#e5c158]/30 transition">
-                    <h3 class="text-white text-2xl font-light mb-4">Высший стандарт</h3>
-                    <p class="font-sans text-sm text-gray-400 font-light">В работе используются исключительно сертифицированные премиальные составы мировых брендов.</p>
-                </div>
-                <div class="bg-[#080c14] p-10 rounded-3xl border border-white/5 hover:border-[#e5c158]/30 transition">
-                    <h3 class="text-white text-2xl font-light mb-4">Абсолютный фокус</h3>
-                    <p class="font-sans text-sm text-gray-400 font-light">Уникальный формат одного бокса гарантирует, что всё внимание мастера будет направлено только на ваше авто.</p>
-                </div>
-            </div>
-        </div>
+    <section class="features" id="features"><div class="wrap"><h2 class="sec-title">Философия ухода</h2><div class="grid"><div class="card"><h3>Бережное отношение</h3><p>Мы не признаем спешки. Каждая деталь кузова и салона обрабатывается с абсолютной точностью и ювелирной аккуратностью.</p></div><div class="card"><h3>Высший стандарт</h3><p>В работе используются исключительно сертифицированные премиальные составы и защитные компоненты мировых брендов.</p></div><div class="card"><h3>Абсолютный фокус</h3><p>Уникальный формат одного бокса гарантирует, что всё внимание и мастерство будут направлены только на ваш автомобиль.</p></div></div></div></section>
+    <section class="wrap foam-sec">
+        <h2 class="sec-title">Эстетика процесса</h2>
+        <div class="win-box"><div class="glass"><h2>Искусство детализации</h2><p>Деликатное очищение, профессиональное восстановление лакокрасочного покрытия, полировка оптики и нанесение слоев долговечной керамической защиты. Ваша машина заслуживает этого.</p></div><canvas id="foamCanvas"></canvas></div><p class="hint">• Проведите по стеклу, чтобы убрать active-tagную пену •</p>
     </section>
-    <section class="flex flex-col items-center py-16">
-        <h2 class="text-4xl font-light text-white mb-10 tracking-wide">Эстетика процесса</h2>
-        <div class="relative w-full max-w-4xl h-[350px] md:h-[420px] rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#121b2d] to-[#070a12] flex flex-col justify-center items-center p-10 text-center select-none">
-                <h2 class="text-[#e5c158] text-3xl font-light mb-4">Искусство детализации</h2>
-                <p class="text-xl max-w-2xl text-white font-light">Деликатное очищение, полировка оптики и нанесение слоев долговечной керамической защиты.</p>
-            </div>
-            <canvas id="foamCanvas" class="absolute inset-0 w-full h-full cursor-pointer z-10"></canvas>
-        </div>
-        <p class="mt-4 text-[#e5c158] text-xs font-sans tracking-widest uppercase">• Проведите по стеклу, чтобы убрать активную пену •</p>
-    </section>
-    <section class="bg-[#0b111e] rounded-[40px] py-16 my-10" id="booking">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between gap-10 px-8">
-            <div class="flex-1 min-w-[280px]">
-                <h2 class="text-5xl font-light text-white mb-6 leading-tight">Начнем<br>с разговора?</h2>
-                <p class="text-gray-400 text-lg mb-4 font-light">Не обязательно знать все ответы. Достаточно желания подарить своему автомобилю безупречный вид.</p>
-            </div>
-            <div class="flex-[1.5] min-w-[320px] md:min-w-[450px] bg-[#080c14] p-8 md:p-12 rounded-3xl border border-[#e5c158]/10 shadow-xl">
-                <h3 class="text-2xl font-light text-white mb-1">Оставьте заявку</h3><p class="font-sans text-xs text-gray-500 mb-6">Я перезвоню или напишу для подтверждения.</p>
-                <form id="orderForm" class="font-sans text-xs">
-                    <span class="text-gray-400 tracking-wider uppercase block mb-3">Направление ухода</span>
-                    <div class="flex flex-wrap gap-2 mb-6" id="fG">
-                        <button type="button" class="border border-white/10 text-gray-400 px-4 py-2.5 rounded-full transition active-tag">Комплексный детейлинг</button>
-                        <button type="button" class="border border-white/10 text-gray-400 px-4 py-2.5 rounded-full transition">Полировка кузова</button>
-                        <button type="button" class="border border-white/10 text-gray-400 px-4 py-2.5 rounded-full transition">Керамика</button>
+    <section class="booking" id="booking">
+        <div class="wrap b-wrap">
+            <div class="b-left"><h2>Начнем <br>с разговора?</h2><p>Не обязательно знать все ответы. Достаточно желания подарить своему автомобилю безупречный вид.</p><p>В форме достаточно указать имя и телефон. Выбранное время бронируется за вами после личного подтверждения мастером.</p></div>
+            <div class="b-form">
+                <h3 class="b-title">Оставьте заявку</h3><p class="b-sub">Я перезвоню или напишу, чтобы подтвердить время.</p>
+                <form id="orderForm">
+                    <span class="f-label">Направление ухода</span>
+                    <div class="tag-group" id="fG">
+                        <button type="button" class="tag-btn active-tag">Комплексный детейлинг</button><button type="button" class="tag-btn">Полировка кузова</button><button type="button" class="tag-btn">Жидкое стекло / Керамика</button><button type="button" class="tag-btn">Пока не знаю</button>
                     </div>
-                    <span class="text-gray-400 tracking-wider uppercase block mb-3">Когда удобно (МСК)</span>
-                    <div class="flex gap-2 overflow-x-auto pb-2 mb-6" id="cG">
-                        <div class="flex-none w-14 h-16 border border-white/10 rounded-xl flex flex-col justify-center items-center cursor-pointer transition active-tag"><span class="text-[9px] text-gray-500">ПТ</span><span class="text-base text-white font-semibold">30</span></div>
-                        <div class="flex-none w-14 h-16 border border-white/10 rounded-xl flex flex-col justify-center items-center cursor-pointer transition"><span class="text-[9px] text-gray-500">СБ</span><span class="text-base text-white font-semibold">31</span></div>
-                        <div class="flex-none w-14 h-16 border border-white/10 rounded-xl flex flex-col justify-center items-center cursor-pointer transition"><span class="text-[9px] text-gray-500">ВС</span><span class="text-base text-white font-semibold">1</span></div>
+                    <span class="f-label">Когда удобно — время московское</span>
+                    <div class="calendar" id="cG">
+                        <div class="cal-day active-tag"><span class="sub">ПТ</span><span class="num">30</span></div><div class="cal-day"><span class="sub">СБ</span><span class="num">31</span></div><div class="cal-day"><span class="sub">ВС</span><span class="num">1</span></div><div class="cal-day"><span class="sub">ПН</span><span class="num">2</span></div><div class="cal-day"><span class="sub">ВТ</span><span class="num">3</span></div><div class="cal-day"><span class="sub">СР</span><span class="num">4</span></div>
                     </div>
-                    <div class="flex flex-col md:flex-row gap-4 mb-6">
-                        <div class="flex-1"><span class="text-gray-400 tracking-wider uppercase block mb-2">Имя</span><input type="text" placeholder="Имя" required class="w-full bg-transparent border-b border-white/15 py-2 text-white text-sm focus:outline-none focus:border-[#e5c158]"></div>
-                        <div class="flex-1"><span class="text-gray-400 tracking-wider uppercase block mb-2">Телефон</span><input type="tel" placeholder="+7 (900) 000-00-00" required class="w-full bg-transparent border-b border-white/15 py-2 text-white text-sm focus:outline-none focus:border-[#e5c158]"></div>
+                    <div class="inputs-row">
+                        <div class="input-field"><span class="f-label">Как к вам обращаться</span><input type="text" placeholder="Имя" required></div>
+                        <div class="input-field"><span class="f-label">Телефон</span><input type="tel" placeholder="+7 (900) 000-00-00" required></div>
                     </div>
-                    <span class="text-gray-400 tracking-wider uppercase block mb-3">Способ связи</span>
-                    <div class="flex gap-2 mb-6" id="cntG">
-                        <button type="button" class="border border-white/10 text-gray-400 px-4 py-2.5 rounded-full transition active-tag">Звонок</button><button type="button" class="border border-white/10 text-gray-400 px-4 py-2.5 rounded-full transition">Telegram</button>
+                    <span class="f-label">Как с вами связаться</span>
+                    <div class="tag-group" id="cntG">
+                        <button type="button" class="tag-btn active-tag">Звонок</button><button type="button" class="tag-btn">Telegram</button><button type="button" class="tag-btn">WhatsApp</button>
                     </div>
-                    <div class="mb-6"><span class="text-gray-400 tracking-wider uppercase block mb-2">Марка машины</span><textarea placeholder="Можно оставить пустым" class="w-full bg-transparent border-b border-white/15 py-2 text-white text-sm h-14 resize-none focus:outline-none focus:border-[#e5c158]"></textarea></div>
-                    <div class="flex items-center gap-4 flex-wrap"><button type="submit" class="bg-[#e5c158] text-[#080c14] font-semibold px-8 py-4 rounded-full tracking-widest uppercase hover:bg-[#f3d37c] transition duration-300">Отправить заявку</button></div>
+                    <div class="input-field" style="margin-top:20px;"><span class="f-label">Марка автомобиля или комментарий</span><textarea placeholder="Можно оставить это поле пустым"></textarea></div>
+                    <div class="btn-submit-wrap"><button type="submit" class="btn-main">Отправить заявку</button><p class="btn-sub-text">Нажимая кнопку, вы соглашаетесь, что я свяжусь с вами по этому номеру.</p></div>
                 </form>
             </div>
         </div>
     </section>
-    <footer class="text-center py-10 border-t border-white/5 text-xs text-gray-600 tracking-widest uppercase"><p>&copy; 2026 Favorit Detailing.</p></footer>
+    <footer><p>&copy; 2026 Favorit Detailing. Эстетика и качество.</p></footer>
     <script src="script.js"></script>
 </body>
 </html>
