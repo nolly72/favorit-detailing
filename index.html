@@ -1,50 +1,704 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Favorit Detailing</title>
-    <link rel="preconnect" href="https://googleapis.com"><link rel="preconnect" href="https://gstatic.com" crossorigin><link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorit Detailing — Премиум Детейлинг Москвы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- СБРОС И БАЗА --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- ПЕРЕМЕННЫЕ --- */
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f4e5b8;
+            --dark: #0a0a0a;
+            --gray: #1a1a1a;
+        }
+
+        /* --- АНИМАЦИИ --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ШАПКА --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .logo::after {
+            content: 'DETAILING';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            font-size: 10px;
+            color: #fff;
+            letter-spacing: 5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('main.jpg'); /* ТВОЕ ФОТО ЗДЕСЬ */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: brightness(0.4);
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            letter-spacing: 8px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fff 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            padding: 20px 60px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .btn-premium:hover {
+            color: #000;
+        }
+
+        .btn-premium:hover::before {
+            left: 0;
+        }
+
+        /* --- СЕКЦИЯ О НАС --- */
+        .about-section {
+            padding: 120px 0;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 50px 40px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #000;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* --- ГАЛЕРЕЯ --- */
+        .gallery-section {
+            padding: 120px 0;
+            background: var(--gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 4/3;
+            background: #1a1a1a;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- ФОРМА ЗАПИСИ --- */
+        .booking-section {
+            padding: 120px 0;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: #555;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 20px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- ПОДВАЛ --- */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            background: #000;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        footer .logo-footer {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        /* --- АДАПТИВ --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero-description { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            nav { flex-direction: column; gap: 20px; }
+            .container { padding: 0 20px; }
+            .form-container { padding: 30px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="wrap"><a href="#about" class="logo">FAVORIT<span>.</span></a><nav><a href="#about">О нас</a><a href="#features">Принципы</a><a href="#booking">Запись</a></nav></header>
-    <section class="wrap hero" id="about">
-        <div class="hero-txt"><h1>Место, где автомобили обретают <span style="color:#e5c158">первозданный вид.</span></h1><p>Премиальное качество детейлинга в приватном боксе.</p></div>
-        <div class="hero-img"><div class="img-plh">Фото: main.jpg</div><img src="main.jpg" alt="Favorit Detailing"></div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">FAVORIT</a>
+                <nav>
+                    <a href="#about">О нас</a>
+                    <a href="#gallery">Работы</a>
+                    <a href="#booking">Запись</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-subtitle">Премиум Детейлинг</div>
+            <h1>FAVORIT</h1>
+            <p class="hero-description">Искусство ухода за вашим автомобилем. Безупречный результат, премиальное качество, индивидуальный подход.</p>
+            <a href="#booking" class="btn-premium">Записаться</a>
+        </div>
     </section>
-    <section class="features" id="features"><div class="wrap"><h2 class="sec-title">Философия ухода</h2><div class="grid"><div class="card"><h3>Бережное отношение</h3><p>Мы не признаем спешки. Каждая деталь кузова и салона обрабатывается с абсолютной точностью и ювелирной аккуратностью.</p></div><div class="card"><h3>Высший стандарт</h3><p>В работе используются исключительно сертифицированные премиальные составы и защитные компоненты мировых брендов.</p></div><div class="card"><h3>Абсолютный фокус</h3><p>Уникальный формат одного бокса гарантирует, что всё внимание и мастерство будут направлены только на ваш автомобиль.</p></div></div></div></section>
-    <section class="wrap foam-sec">
-        <h2 class="sec-title">Эстетика процесса</h2>
-        <div class="win-box"><div class="glass"><h2>Искусство детализации</h2><p>Деликатное очищение, профессиональное восстановление лакокрасочного покрытия, полировка оптики и нанесение слоев долговечной керамической защиты. Ваша машина заслуживает этого.</p></div><canvas id="foamCanvas"></canvas></div><p class="hint">• Проведите по стеклу, чтобы убрать active-tagную пену •</p>
+
+    <!-- О нас -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-subtitle">Наши преимущества</div>
+                <h2 class="section-title">Почему выбирают нас</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">✦</div>
+                    <h3>Бережное отношение</h3>
+                    <p>Каждый автомобиль для нас — произведение искусства. Мы работаем с максимальной аккуратностью, используя только безопасные технологии и материалы, которые не повреждают покрытие.</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">◆</div>
+                    <h3>Премиальные материалы</h3>
+                    <p>Используем только профессиональную химию мирового уровня. Керамические покрытия, полировальные пасты, защитные составы — всё самое лучшее для вашего авто.</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">★</div>
+                    <h3>Экспертный подход</h3>
+                    <p>Многолетний опыт и постоянное обучение позволяют нам достигать результатов, недоступных обычным мойкам. Мы знаем все тонкости работы с любыми покрытиями.</p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section class="booking" id="booking">
-        <div class="wrap b-wrap">
-            <div class="b-left"><h2>Начнем <br>с разговора?</h2><p>Не обязательно знать все ответы. Достаточно желания подарить своему автомобилю безупречный вид.</p><p>В форме достаточно указать имя и телефон. Выбранное время бронируется за вами после личного подтверждения мастером.</p></div>
-            <div class="b-form">
-                <h3 class="b-title">Оставьте заявку</h3><p class="b-sub">Я перезвоню или напишу, чтобы подтвердить время.</p>
-                <form id="orderForm">
-                    <span class="f-label">Направление ухода</span>
-                    <div class="tag-group" id="fG">
-                        <button type="button" class="tag-btn active-tag">Комплексный детейлинг</button><button type="button" class="tag-btn">Полировка кузова</button><button type="button" class="tag-btn">Жидкое стекло / Керамика</button><button type="button" class="tag-btn">Пока не знаю</button>
+
+    <!-- Галерея -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-subtitle">Портфолио</div>
+                <h2 class="section-title">Наши работы</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Ячейка 1 -->
+                <div class="gallery-item animate-on-scroll">
+                    <!-- Сюда вставь фото: <img src="work1.jpg" alt="Полировка"> -->
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Полировка кузова</div>
                     </div>
-                    <span class="f-label">Когда удобно — время московское</span>
-                    <div class="calendar" id="cG">
-                        <div class="cal-day active-tag"><span class="sub">ПТ</span><span class="num">30</span></div><div class="cal-day"><span class="sub">СБ</span><span class="num">31</span></div><div class="cal-day"><span class="sub">ВС</span><span class="num">1</span></div><div class="cal-day"><span class="sub">ПН</span><span class="num">2</span></div><div class="cal-day"><span class="sub">ВТ</span><span class="num">3</span></div><div class="cal-day"><span class="sub">СР</span><span class="num">4</span></div>
+                </div>
+
+                <!-- Ячейка 2 -->
+                <div class="gallery-item animate-on-scroll">
+                    <!-- Сюда вставь фото: <img src="work2.jpg" alt="Химчистка"> -->
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Химчистка салона</div>
                     </div>
-                    <div class="inputs-row">
-                        <div class="input-field"><span class="f-label">Как к вам обращаться</span><input type="text" placeholder="Имя" required></div>
-                        <div class="input-field"><span class="f-label">Телефон</span><input type="tel" placeholder="+7 (900) 000-00-00" required></div>
+                </div>
+
+                <!-- Ячейка 3 -->
+                <div class="gallery-item animate-on-scroll">
+                    <!-- Сюда вставь фото: <img src="work3.jpg" alt="Керамика"> -->
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Керамическое покрытие</div>
                     </div>
-                    <span class="f-label">Как с вами связаться</span>
-                    <div class="tag-group" id="cntG">
-                        <button type="button" class="tag-btn active-tag">Звонок</button><button type="button" class="tag-btn">Telegram</button><button type="button" class="tag-btn">WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма записи -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-subtitle">Запись</div>
+                <h2 class="section-title">Забронировать услугу</h2>
+            </div>
+            
+            <div class="form-container animate-on-scroll">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Иван Иванов" required>
                     </div>
-                    <div class="input-field" style="margin-top:20px;"><span class="f-label">Марка автомобиля или комментарий</span><textarea placeholder="Можно оставить это поле пустым"></textarea></div>
-                    <div class="btn-submit-wrap"><button type="submit" class="btn-main">Отправить заявку</button><p class="btn-sub-text">Нажимая кнопку, вы соглашаетесь, что я свяжусь с вами по этому номеру.</p></div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="car">Марка и модель авто</label>
+                        <input type="text" id="car" name="car" class="form-control" placeholder="BMW X5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Желаемая услуга</label>
+                        <select id="service" name="service" class="form-control" required>
+                            <option value="">Выберите услугу</option>
+                            <option value="polish">Полировка кузова</option>
+                            <option value="cleaning">Химчистка салона</option>
+                            <option value="ceramic">Керамическое покрытие</option>
+                            <option value="complex">Комплексный уход</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Отправить заявку</button>
                 </form>
             </div>
         </div>
     </section>
-    <footer><p>&copy; 2026 Favorit Detailing. Эстетика и качество.</p></footer>
-    <script src="script.js"></script>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="logo-footer">FAVORIT DETAILING</div>
+            <p>Премиальный детейлинг в Москве</p>
+            <p>&copy; 2026 Все права защищены</p>
+        </div>
+    </footer>
+
+    <!-- Скрипт для анимаций при скролле -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
 </body>
 </html>
