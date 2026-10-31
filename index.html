@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FAVORIT DETAILING | Гараж с душой</title>
+    <title>FAVORIT DETAILING | Премиальная мастерская Москвы</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg: #0a0a0a;
             --bg-2: #111111;
-            --bg-3: #1a1a1a;
+            --bg-3: #161616;
             --text: #e8e8e8;
             --text-muted: #888;
             --accent: #ffb800;
             --accent-dark: #d99c00;
+            --carbon: #1a1a1a;
+            --steel: #c0c0c0;
             --line: rgba(255, 255, 255, 0.08);
             --font-h: 'Oswald', sans-serif;
             --font-b: 'Inter', sans-serif;
+            --font-i: 'Playfair Display', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,6 +39,14 @@
             overflow-x: hidden;
             line-height: 1.6;
             cursor: none;
+        }
+
+        /* Карбоновая текстура */
+        .carbon-bg {
+            background-color: var(--carbon);
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 4px),
+                repeating-linear-gradient(-45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 4px);
         }
 
         img { max-width: 100%; display: block; }
@@ -58,9 +69,16 @@
         .preloader-logo {
             font-family: var(--font-h);
             font-size: 3rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.3em;
             color: var(--accent);
             animation: pulse 1.5s infinite;
+        }
+        .preloader-sub {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--text-muted);
+            margin-top: 10px;
+            text-transform: uppercase;
         }
         .preloader-bar {
             width: 200px;
@@ -76,7 +94,7 @@
             left: 0; top: 0;
             width: 40%;
             height: 100%;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
             animation: loading 1.2s infinite ease-in-out;
         }
         @keyframes loading {
@@ -97,7 +115,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            transition: transform 0.15s ease, width 0.3s, height 0.3s, background 0.3s;
+            transition: transform 0.15s ease, width 0.3s, height 0.3s;
             transform: translate(-50%, -50%);
             mix-blend-mode: difference;
         }
@@ -113,33 +131,32 @@
             .cursor { display: none; }
         }
 
-        /* === MARQUEE (бегущая строка) === */
+        /* === MARQUEE === */
         .marquee {
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: var(--bg);
             padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
             font-family: var(--font-h);
             font-weight: 500;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--bg);
-            border-bottom: 1px solid var(--bg);
+            font-size: 0.85rem;
         }
         .marquee-track {
             display: inline-block;
-            animation: marquee 30s linear infinite;
+            animation: marquee 35s linear infinite;
         }
         .marquee-track span {
             display: inline-block;
             padding: 0 30px;
         }
         .marquee-track span::after {
-            content: '★';
+            content: '◆';
             margin-left: 30px;
-            color: var(--bg);
+            font-size: 0.6rem;
+            vertical-align: middle;
         }
         @keyframes marquee {
             from { transform: translateX(0); }
@@ -182,9 +199,9 @@
             list-style: none;
         }
         .nav-links a {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
             transition: color 0.3s;
             position: relative;
@@ -206,10 +223,11 @@
             padding: 10px 24px;
             border: 1px solid var(--accent);
             color: var(--accent);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             transition: all 0.3s;
+            font-weight: 500;
         }
         .nav-cta:hover {
             background: var(--accent);
@@ -245,14 +263,14 @@
             position: absolute;
             inset: 0;
             background: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=2000&auto=format&fit=crop') center/cover;
-            filter: grayscale(100%) contrast(1.1) brightness(0.4);
+            filter: grayscale(100%) contrast(1.1) brightness(0.35);
             z-index: 0;
         }
         .hero-bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.9) 100%);
         }
         .hero-content {
             position: relative;
@@ -269,9 +287,9 @@
             padding: 8px 16px;
             border: 1px solid var(--accent);
             color: var(--accent);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             margin-bottom: 30px;
             opacity: 0;
             animation: fadeUp 0.8s ease forwards 0.3s;
@@ -299,14 +317,20 @@
             opacity: 0;
             animation: fadeUp 1s ease forwards 0.5s;
         }
-        .hero h1 .accent { color: var(--accent); font-style: italic; font-weight: 300; }
+        .hero h1 .accent { 
+            color: var(--accent); 
+            font-family: var(--font-i);
+            font-style: italic; 
+            font-weight: 400; 
+        }
         .hero-sub {
             font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 500px;
+            max-width: 550px;
             margin-bottom: 40px;
             opacity: 0;
             animation: fadeUp 1s ease forwards 0.7s;
+            line-height: 1.7;
         }
         .hero-buttons {
             display: flex;
@@ -320,7 +344,7 @@
             align-items: center;
             gap: 10px;
             padding: 18px 36px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             font-weight: 500;
@@ -365,10 +389,11 @@
             line-height: 1;
         }
         .hero-stat-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
+            margin-top: 5px;
         }
 
         @keyframes fadeUp {
@@ -390,12 +415,13 @@
         .section-label {
             display: inline-block;
             color: var(--accent);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
             margin-bottom: 15px;
             padding-left: 40px;
             position: relative;
+            font-weight: 500;
         }
         .section-label::before {
             content: '';
@@ -414,7 +440,12 @@
             line-height: 1;
             letter-spacing: -0.01em;
         }
-        .section-title .accent { color: var(--accent); font-style: italic; font-weight: 300; }
+        .section-title .accent { 
+            color: var(--accent); 
+            font-family: var(--font-i);
+            font-style: italic; 
+            font-weight: 400; 
+        }
 
         /* === ABOUT === */
         .about {
@@ -423,7 +454,7 @@
             overflow: hidden;
         }
         .about::before {
-            content: 'GARAGE';
+            content: 'ATELIER';
             position: absolute;
             top: 50%;
             left: 50%;
@@ -431,7 +462,7 @@
             font-family: var(--font-h);
             font-size: 25vw;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.015);
             letter-spacing: -0.05em;
             pointer-events: none;
             white-space: nowrap;
@@ -448,6 +479,7 @@
             color: var(--text-muted);
             margin-bottom: 20px;
             font-size: 1.05rem;
+            line-height: 1.8;
         }
         .about-text p strong {
             color: var(--text);
@@ -471,11 +503,12 @@
             line-height: 1;
         }
         .about-feature-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 5px;
+            line-height: 1.4;
         }
         .about-img {
             position: relative;
@@ -502,7 +535,7 @@
         /* === SERVICES === */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2px;
             background: var(--line);
             border: 1px solid var(--line);
@@ -521,7 +554,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s;
@@ -539,12 +572,13 @@
             font-size: 1.5rem;
             text-transform: uppercase;
             margin-bottom: 10px;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.05em;
         }
         .service-card p {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 20px;
+            line-height: 1.6;
         }
         .service-price {
             font-family: var(--font-h);
@@ -552,7 +586,7 @@
             color: var(--accent);
         }
         .service-price span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-family: var(--font-b);
         }
@@ -576,11 +610,12 @@
         }
         .calc-group-label {
             font-family: var(--font-h);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             margin-bottom: 20px;
             color: var(--accent);
+            font-weight: 500;
         }
         .calc-cars {
             display: grid;
@@ -606,9 +641,10 @@
             color: var(--accent);
         }
         .calc-car-name {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            font-weight: 500;
         }
         .calc-car-mult {
             font-size: 0.7rem;
@@ -656,11 +692,12 @@
         }
         .calc-service-info { flex: 1; }
         .calc-service-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 3px;
+            font-weight: 500;
         }
         .calc-service-price {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
@@ -673,11 +710,12 @@
         }
         .calc-result-title {
             font-family: var(--font-h);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             margin-bottom: 30px;
             color: var(--accent);
+            font-weight: 500;
         }
         .calc-breakdown {
             margin-bottom: 30px;
@@ -688,14 +726,14 @@
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
-        .calc-breakdown-item span:last-child { color: var(--text); }
+        .calc-breakdown-item span:last-child { color: var(--text); font-weight: 500; }
         .calc-total-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
             margin-bottom: 10px;
         }
@@ -749,7 +787,7 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            width: 3px;
+            width: 2px;
             background: var(--accent);
             transform: translateX(-50%);
             z-index: 2;
@@ -769,17 +807,19 @@
             color: var(--bg);
             font-weight: bold;
             box-shadow: 0 0 20px rgba(255, 184, 0, 0.5);
+            font-size: 1.2rem;
         }
         .ba-label {
             position: absolute;
             top: 20px;
             padding: 8px 16px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             z-index: 3;
+            font-weight: 500;
         }
         .ba-label-before { left: 20px; }
         .ba-label-after { right: 20px; background: var(--accent); color: var(--bg); }
@@ -807,6 +847,17 @@
             transition: filter 0.3s;
         }
         .ba-thumb:hover img { filter: grayscale(0%); }
+        .ba-thumb-label {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            font-size: 0.7rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(0,0,0,0.7);
+            padding: 3px 8px;
+        }
 
         /* === SUBSCRIPTIONS === */
         .subs { background: var(--bg-2); }
@@ -840,13 +891,14 @@
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
         }
         .sub-name {
             font-family: var(--font-h);
             font-size: 1.8rem;
             text-transform: uppercase;
             margin-bottom: 10px;
+            letter-spacing: 0.05em;
         }
         .sub-price {
             font-family: var(--font-h);
@@ -856,9 +908,11 @@
             margin-bottom: 5px;
         }
         .sub-price-period {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
         .sub-features {
             list-style: none;
@@ -867,7 +921,7 @@
         .sub-features li {
             padding: 10px 0;
             border-bottom: 1px solid var(--line);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -913,6 +967,7 @@
             font-size: 0.95rem;
             margin-bottom: 20px;
             line-height: 1.7;
+            font-style: italic;
         }
         .review-author {
             display: flex;
@@ -957,7 +1012,7 @@
             font-family: var(--font-h);
             font-size: 20vw;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.015);
             line-height: 1;
             pointer-events: none;
         }
@@ -970,10 +1025,11 @@
         }
         .contact-info h3 {
             font-family: var(--font-h);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             margin-bottom: 20px;
             color: var(--accent);
+            letter-spacing: 0.1em;
         }
         .contact-item {
             display: flex;
@@ -988,14 +1044,14 @@
             flex-shrink: 0;
         }
         .contact-item-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             margin-bottom: 5px;
         }
         .contact-item-value {
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
 
         .form {
@@ -1006,9 +1062,9 @@
         .form-group { margin-bottom: 20px; }
         .form-label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
             margin-bottom: 8px;
         }
@@ -1041,7 +1097,7 @@
             margin-top: 10px;
         }
         .form-note {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             margin-top: 15px;
             text-align: center;
@@ -1064,20 +1120,22 @@
             margin-top: 15px;
             font-size: 0.9rem;
             max-width: 300px;
+            line-height: 1.7;
         }
         .footer-col h4 {
             font-family: var(--font-h);
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             margin-bottom: 20px;
             color: var(--accent);
+            font-weight: 500;
         }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 10px; }
         .footer-col a {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s;
         }
         .footer-col a:hover { color: var(--accent); }
@@ -1087,7 +1145,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             flex-wrap: wrap;
             gap: 15px;
@@ -1154,6 +1212,7 @@
             font-size: 2rem;
             text-transform: uppercase;
             margin-bottom: 10px;
+            letter-spacing: 0.05em;
         }
         .modal p {
             color: var(--text-muted);
@@ -1253,6 +1312,7 @@
     <!-- PRELOADER -->
     <div class="preloader" id="preloader">
         <div class="preloader-logo">FAVORIT</div>
+        <div class="preloader-sub">Detailing Atelier · Moscow</div>
         <div class="preloader-bar"></div>
     </div>
 
@@ -1262,14 +1322,16 @@
     <!-- MARQUEE TOP -->
     <div class="marquee" style="margin-top: 70px;">
         <div class="marquee-track">
-            <span>Скидка 20% на первый визит</span>
+            <span>Скидка 20% на первое посещение</span>
             <span>Бесплатная диагностика ЛКП</span>
-            <span>Абонементы от 15 000 ₽/мес</span>
+            <span>Абонементы от 25 000 ₽/мес</span>
             <span>Запись онлайн 24/7</span>
-            <span>Скидка 20% на первый визит</span>
+            <span>Керамика Gtechniq и Gyeon в наличии</span>
+            <span>Скидка 20% на первое посещение</span>
             <span>Бесплатная диагностика ЛКП</span>
-            <span>Абонементы от 15 000 ₽/мес</span>
+            <span>Абонементы от 25 000 ₽/мес</span>
             <span>Запись онлайн 24/7</span>
+            <span>Керамика Gtechniq и Gyeon в наличии</span>
         </div>
     </div>
 
@@ -1296,12 +1358,12 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-tag">Гараж с душой · Москва</div>
-            <h1>Твой авто<br>заслуживает<br><span class="accent">лучшего</span></h1>
-            <p class="hero-sub">Не салон, а мастерская. Не конвейер, а индивидуальный подход. Мы — те самые парни из гаража, которые делают лучше, чем дилер.</p>
+            <div class="hero-tag">Премиальная мастерская · Москва</div>
+            <h1>Искусство<br>ухода за<br><span class="accent">автомобилем</span></h1>
+            <p class="hero-sub">Не конвейерный сервис, а авторская мастерская. Индивидуальный подход к каждому автомобилю, сертифицированные материалы и мастера с опытом более 7 лет.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="openModal()">
-                    Записаться
+                    Записаться на сервис
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
                 <a href="#calculator" class="btn btn-outline">Рассчитать стоимость</a>
@@ -1313,47 +1375,47 @@
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num" data-count="1200">0</div>
-                    <div class="hero-stat-label">Довольных авто</div>
+                    <div class="hero-stat-label">Автомобилей</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num" data-count="98">0</div>
-                    <div class="hero-stat-label">% возвратов</div>
+                    <div class="hero-stat-label">% Рекомендаций</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section class="about" id="about">
+    <section class="about carbon-bg" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-text reveal">
                     <div class="section-label">О мастерской</div>
-                    <h2 class="section-title">Гараж, в котором<br>рождается <span class="accent">качество</span></h2>
-                    <p style="margin-top: 30px;">Мы начинали в обычном гараже на окраине. Без пафоса, без дорогого оборудования, без понтов. Просто мы, наши руки и любовь к тачкам.</p>
-                    <p>Сегодня у нас больше пространства и инструментов. Но подход остался тем же — <strong>каждый автомобиль мы воспринимаем как свой</strong>. Не гоним конвейер, не халтурим, не делаем "и так сойдёт".</p>
-                    <p>Приезжай — покажем, объясним, нальём кофе. У нас нет менеджеров в костюмах, только мастера, которые знают твою машину лучше тебя.</p>
+                    <h2 class="section-title">Ателье,<br>где рождается <span class="accent">совершенство</span></h2>
+                    <p style="margin-top: 30px;">Мы начинали в небольшой мастерской на окраине Москвы. Без пафоса и показного лоска — только искренняя любовь к автомобилям и стремление к безупречному результату.</p>
+                    <p>Сегодня FAVORIT — это современное ателье с профессиональным оборудованием и командой сертифицированных мастеров. Но философия осталась прежней: <strong>каждый автомобиль получает индивидуальное внимание</strong>, которого он заслуживает.</p>
+                    <p>Мы работаем с премиальными брендами — Gtechniq, Gyeon, Koch-Chemie, Rupes. Никаких компромиссов в качестве материалов и технологий.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="about-feature-num">01</div>
-                            <div class="about-feature-label">Честные цены<br>без накруток</div>
+                            <div class="about-feature-label">Прозрачное<br>ценообразование</div>
                         </div>
                         <div class="about-feature">
                             <div class="about-feature-num">02</div>
-                            <div class="about-feature-label">Работаем<br>при тебе</div>
+                            <div class="about-feature-label">Работы<br>в вашем присутствии</div>
                         </div>
                         <div class="about-feature">
                             <div class="about-feature-num">03</div>
-                            <div class="about-feature-label">Гарантия<br>на все работы</div>
+                            <div class="about-feature-label">Гарантия<br>до 5 лет</div>
                         </div>
                         <div class="about-feature">
                             <div class="about-feature-num">04</div>
-                            <div class="about-feature-label">Только<br>проверенная химия</div>
+                            <div class="about-feature-label">Только<br>премиальная химия</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-img reveal">
-                    <img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?q=80&w=1000&auto=format&fit=crop" alt="Мастерская">
+                    <img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?q=80&w=1000&auto=format&fit=crop" alt="Мастерская FAVORIT">
                 </div>
             </div>
         </div>
@@ -1363,139 +1425,139 @@
     <section id="services">
         <div class="container">
             <div class="section-head reveal">
-                <div class="section-label">Что мы делаем</div>
-                <h2 class="section-title">Услуги <span class="accent">мастерской</span></h2>
+                <div class="section-label">Услуги ателье</div>
+                <h2 class="section-title">Полный спектр <span class="accent">детейлинга</span></h2>
             </div>
             <div class="services-grid">
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    <h3>Керамика</h3>
-                    <p>Многослойное покрытие для защиты и блеска на 2-3 года</p>
-                    <div class="service-price">от 25 000 ₽</div>
+                    <h3>Керамическое покрытие</h3>
+                    <p>Многослойная защита Gtechniq Crystal Serum Ultra. Глубина цвета, гидрофобный эффект и защита до 5 лет.</p>
+                    <div class="service-price">от 45 000 ₽ <span>/ слой</span></div>
                 </div>
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    <h3>Полировка</h3>
-                    <p>Убираем царапины, возвращаем заводской блеск</p>
-                    <div class="service-price">от 15 000 ₽</div>
+                    <h3>Восстановительная полировка</h3>
+                    <p>Удаление царапин, голограмм и окислов. Возвращение заводского состояния лакокрасочного покрытия.</p>
+                    <div class="service-price">от 25 000 ₽</div>
                 </div>
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    <h3>Химчистка</h3>
-                    <p>Глубокая чистка салона с разбором и озонацией</p>
-                    <div class="service-price">от 8 000 ₽</div>
+                    <h3>Детейлинг химчистка</h3>
+                    <p>Глубокая очистка салона с полным разбором, озонацией и защитой кожи кондиционером.</p>
+                    <div class="service-price">от 15 000 ₽</div>
                 </div>
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
-                    <h3>Оклейка плёнкой</h3>
-                    <p>Антигравийная защита или смена цвета</p>
-                    <div class="service-price">от 35 000 ₽</div>
+                    <h3>Оклейка полиуретаном</h3>
+                    <p>Антигравийная защита SunTek и XPEL. Полная оклейка кузова или зон риска с гарантией 10 лет.</p>
+                    <div class="service-price">от 80 000 ₽</div>
                 </div>
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
                     <h3>Детейлинг-мойка</h3>
-                    <p>Двухфазная мойка по стандартам детейлинга</p>
-                    <div class="service-price">от 2 500 ₽</div>
+                    <p>Двухфазная бесконтактная мойка, очистка дисков, арок, консервация пластика и резины.</p>
+                    <div class="service-price">от 3 500 ₽</div>
                 </div>
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <h3>Реставрация фар</h3>
-                    <p>Полировка и бронирование оптики</p>
-                    <div class="service-price">от 4 000 ₽</div>
+                    <h3>Реставрация оптики</h3>
+                    <p>Полировка фар с последующим нанесением защитного керамического состава.</p>
+                    <div class="service-price">от 8 000 ₽</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CALCULATOR -->
-    <section class="calculator" id="calculator">
+    <section class="calculator carbon-bg" id="calculator">
         <div class="container">
             <div class="section-head reveal">
-                <div class="section-label">Калькулятор</div>
-                <h2 class="section-title">Рассчитай <span class="accent">стоимость</span></h2>
+                <div class="section-label">Калькулятор стоимости</div>
+                <h2 class="section-title">Рассчитайте <span class="accent">инвестицию</span></h2>
             </div>
             <div class="calc-grid">
                 <div class="calc-options">
                     <div class="reveal">
-                        <div class="calc-group-label">1. Выбери класс авто</div>
+                        <div class="calc-group-label">1. Класс автомобиля</div>
                         <div class="calc-cars">
                             <div class="calc-car active" data-mult="1">
                                 <svg class="calc-car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17h14M5 17a2 2 0 01-2-2V9a2 2 0 012-2h2l2-3h6l2 3h2a2 2 0 012 2v6a2 2 0 01-2 2M7 17v2M17 17v2"/><circle cx="7" cy="13" r="1.5"/><circle cx="17" cy="13" r="1.5"/></svg>
                                 <div class="calc-car-name">Седан</div>
-                                <div class="calc-car-mult">×1.0</div>
+                                <div class="calc-car-mult">коэф. ×1.0</div>
                             </div>
                             <div class="calc-car" data-mult="1.2">
                                 <svg class="calc-car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17h14M5 17a2 2 0 01-2-2v-4a2 2 0 012-2h1l2-4h8l2 4h1a2 2 0 012 2v4a2 2 0 01-2 2M7 17v2M17 17v2"/><circle cx="7" cy="13" r="1.5"/><circle cx="17" cy="13" r="1.5"/></svg>
                                 <div class="calc-car-name">Кроссовер</div>
-                                <div class="calc-car-mult">×1.2</div>
+                                <div class="calc-car-mult">коэф. ×1.2</div>
                             </div>
                             <div class="calc-car" data-mult="1.4">
                                 <svg class="calc-car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17h18M3 17a2 2 0 01-2-2V8a2 2 0 012-2h3l2-3h10l2 3h3a2 2 0 012 2v7a2 2 0 01-2 2M6 17v2M18 17v2"/><circle cx="7" cy="13" r="1.5"/><circle cx="17" cy="13" r="1.5"/></svg>
                                 <div class="calc-car-name">Внедорожник</div>
-                                <div class="calc-car-mult">×1.4</div>
+                                <div class="calc-car-mult">коэф. ×1.4</div>
                             </div>
                         </div>
                     </div>
                     <div class="reveal">
-                        <div class="calc-group-label">2. Выбери услуги</div>
+                        <div class="calc-group-label">2. Выберите услуги</div>
                         <div class="calc-services">
-                            <div class="calc-service" data-price="25000" data-name="Керамика">
+                            <div class="calc-service" data-price="45000" data-name="Керамика">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Керамика</div>
-                                    <div class="calc-service-price">25 000 ₽</div>
+                                    <div class="calc-service-price">45 000 ₽</div>
                                 </div>
                             </div>
-                            <div class="calc-service" data-price="15000" data-name="Полировка">
+                            <div class="calc-service" data-price="25000" data-name="Полировка">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Полировка</div>
-                                    <div class="calc-service-price">15 000 ₽</div>
+                                    <div class="calc-service-price">25 000 ₽</div>
                                 </div>
                             </div>
-                            <div class="calc-service" data-price="8000" data-name="Химчистка">
+                            <div class="calc-service" data-price="15000" data-name="Химчистка">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Химчистка</div>
-                                    <div class="calc-service-price">8 000 ₽</div>
+                                    <div class="calc-service-price">15 000 ₽</div>
                                 </div>
                             </div>
-                            <div class="calc-service" data-price="35000" data-name="Оклейка">
+                            <div class="calc-service" data-price="80000" data-name="Оклейка">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Оклейка плёнкой</div>
-                                    <div class="calc-service-price">35 000 ₽</div>
+                                    <div class="calc-service-price">80 000 ₽</div>
                                 </div>
                             </div>
-                            <div class="calc-service" data-price="2500" data-name="Мойка">
+                            <div class="calc-service" data-price="3500" data-name="Мойка">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Детейлинг-мойка</div>
-                                    <div class="calc-service-price">2 500 ₽</div>
+                                    <div class="calc-service-price">3 500 ₽</div>
                                 </div>
                             </div>
-                            <div class="calc-service" data-price="4000" data-name="Фары">
+                            <div class="calc-service" data-price="8000" data-name="Фары">
                                 <div class="calc-checkbox"></div>
                                 <div class="calc-service-info">
                                     <div class="calc-service-name">Реставрация фар</div>
-                                    <div class="calc-service-price">4 000 ₽</div>
+                                    <div class="calc-service-price">8 000 ₽</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="calc-result reveal">
-                    <div class="calc-result-title">Итого</div>
+                    <div class="calc-result-title">Предварительный расчёт</div>
                     <div class="calc-breakdown" id="calcBreakdown">
                         <div class="calc-breakdown-item">
                             <span>Услуги не выбраны</span>
                             <span>—</span>
                         </div>
                     </div>
-                    <div class="calc-total-label">К оплате</div>
+                    <div class="calc-total-label">Итого к оплате</div>
                     <div class="calc-total"><span id="calcTotal">0</span> ₽</div>
                     <button class="btn btn-primary" onclick="openModal()">
-                        Записаться на эту сумму
+                        Записаться
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                 </div>
@@ -1507,14 +1569,14 @@
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="section-head reveal">
-                <div class="section-label">Наши работы</div>
+                <div class="section-label">Портфолио работ</div>
                 <h2 class="section-title">До и <span class="accent">после</span></h2>
-                <p style="color: var(--text-muted); margin-top: 15px;">Потяни разделитель, чтобы увидеть разницу</p>
+                <p style="color: var(--text-muted); margin-top: 15px;">Перемещайте разделитель, чтобы оценить результат работы наших мастеров</p>
             </div>
             <div class="ba-slider reveal" id="baSlider">
-                <img class="ba-img" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1600&auto=format&fit=crop" alt="До">
+                <img class="ba-img" src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=1600&auto=format&fit=crop" alt="До">
                 <div class="ba-after-wrap" id="baAfter">
-                    <img class="ba-img" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop" alt="После">
+                    <img class="ba-img" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1600&auto=format&fit=crop" alt="После">
                 </div>
                 <div class="ba-handle" id="baHandle">
                     <div class="ba-handle-btn">⇄</div>
@@ -1523,69 +1585,76 @@
                 <div class="ba-label ba-label-after">После</div>
             </div>
             <div class="ba-thumbs">
-                <div class="ba-thumb active" data-before="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1600" data-after="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600">
+                <div class="ba-thumb active" data-before="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=1600" data-after="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1600">
+                    <img src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=400" alt="">
+                    <div class="ba-thumb-label">Полировка</div>
+                </div>
+                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1600" data-after="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600">
                     <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=400" alt="">
+                    <div class="ba-thumb-label">Керамика</div>
                 </div>
-                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1600" data-after="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600">
+                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600" data-after="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1600">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=400" alt="">
+                    <div class="ba-thumb-label">Химчистка</div>
+                </div>
+                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1600" data-after="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=1600">
                     <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=400" alt="">
-                </div>
-                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1600" data-after="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=1600">
-                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=400" alt="">
-                </div>
-                <div class="ba-thumb" data-before="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600" data-after="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1600">
-                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=400" alt="">
+                    <div class="ba-thumb-label">Оклейка</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SUBSCRIPTIONS -->
-    <section class="subs" id="subs">
+    <section class="subs carbon-bg" id="subs">
         <div class="container">
             <div class="section-head reveal">
-                <div class="section-label">Абонементы</div>
-                <h2 class="section-title">Подписка на <span class="accent">чистоту</span></h2>
-                <p style="color: var(--text-muted); margin-top: 15px;">Платишь фикс — забываешь о грязной тачке. Мы сами напомним, когда пора заезжать.</p>
+                <div class="section-label">Программы обслуживания</div>
+                <h2 class="section-title">Абонементы <span class="accent">клуба</span></h2>
+                <p style="color: var(--text-muted); margin-top: 15px;">Регулярное обслуживание автомобиля по фиксированной стоимости. Приоритетная запись и персональный менеджер.</p>
             </div>
             <div class="subs-grid">
                 <div class="sub-card reveal">
-                    <div class="sub-name">Start</div>
-                    <div class="sub-price">15 000 ₽</div>
+                    <div class="sub-name">Essential</div>
+                    <div class="sub-price">25 000 ₽</div>
                     <div class="sub-price-period">в месяц</div>
                     <ul class="sub-features">
                         <li>2 комплексные мойки</li>
-                        <li>Чернение резины</li>
-                        <li>Экспресс-салон</li>
-                        <li>Скидка 10% на прочее</li>
+                        <li>Чернение резины и дисков</li>
+                        <li>Экспресс-уборка салона</li>
+                        <li>Скидка 10% на услуги</li>
+                        <li>Приоритетная запись</li>
                     </ul>
-                    <button class="btn btn-outline" onclick="openModal()">Выбрать</button>
+                    <button class="btn btn-outline" onclick="openModal()">Выбрать тариф</button>
                 </div>
                 <div class="sub-card featured reveal">
-                    <div class="sub-badge">Хит</div>
-                    <div class="sub-name">Optimal</div>
-                    <div class="sub-price">35 000 ₽</div>
+                    <div class="sub-badge">Рекомендуем</div>
+                    <div class="sub-name">Prestige</div>
+                    <div class="sub-price">55 000 ₽</div>
                     <div class="sub-price-period">в месяц</div>
                     <ul class="sub-features">
                         <li>4 комплексные мойки</li>
                         <li>Химчистка раз в квартал</li>
-                        <li>Воск после каждой мойки</li>
-                        <li>Чистка багажника</li>
-                        <li>Скидка 15% на прочее</li>
+                        <li>Нанесение силанта после мойки</li>
+                        <li>Очистка кожи и пластика</li>
+                        <li>Скидка 15% на все услуги</li>
+                        <li>Персональный менеджер</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="openModal()">Выбрать</button>
+                    <button class="btn btn-primary" onclick="openModal()">Выбрать тариф</button>
                 </div>
                 <div class="sub-card reveal">
-                    <div class="sub-name">Premium</div>
-                    <div class="sub-price">70 000 ₽</div>
+                    <div class="sub-name">Exclusive</div>
+                    <div class="sub-price">120 000 ₽</div>
                     <div class="sub-price-period">в месяц</div>
                     <ul class="sub-features">
-                        <li>Моек без лимита</li>
-                        <li>Полировка 2 раза в год</li>
-                        <li>Химчистка 2 раза в год</li>
-                        <li>Заберём / привезём авто</li>
-                        <li>Скидка 20% на всё</li>
+                        <li>Мойки без ограничений</li>
+                        <li>Поддерживающая полировка 2 раза в год</li>
+                        <li>Глубокая химчистка 2 раза в год</li>
+                        <li>Забор и доставка автомобиля</li>
+                        <li>Скидка 20% на все услуги</li>
+                        <li>VIP-зона ожидания</li>
                     </ul>
-                    <button class="btn btn-outline" onclick="openModal()">Выбрать</button>
+                    <button class="btn btn-outline" onclick="openModal()">Выбрать тариф</button>
                 </div>
             </div>
         </div>
@@ -1595,51 +1664,51 @@
     <section class="reviews">
         <div class="container">
             <div class="section-head reveal">
-                <div class="section-label">Отзывы</div>
-                <h2 class="section-title">Что говорят <span class="accent">клиенты</span></h2>
+                <div class="section-label">Отзывы клиентов</div>
+                <h2 class="section-title">Нам <span class="accent">доверяют</span></h2>
             </div>
             <div class="reviews-track">
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Приехал на полировку и керамику. Парни сделали всё за день, при мне показали каждый этап. Машина теперь как новая, даже лучше. Цены адекватные, без развода."</p>
+                    <p class="review-text">"Обратился для нанесения керамики на новый X5. Мастера работают ювелирно — каждая панель обработана с одинаковым вниманием. Результат превзошёл ожидания, кузов выглядит лучше, чем в салоне."</p>
                     <div class="review-author">
                         <div class="review-avatar">А</div>
                         <div>
-                            <div class="review-name">Алексей К.</div>
-                            <div class="review-car">BMW X5, 2021</div>
+                            <div class="review-name">Александр К.</div>
+                            <div class="review-car">BMW X5 M50d, 2023</div>
                         </div>
                     </div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Взял абонемент Optimal — это лучшее решение. Заезжаю раз в неделю на мойку, раз в квартал полная химчистка. Машина всегда как с салона. Ребята — огонь!"</p>
-                    <div class="review-author">
-                        <div class="review-avatar">Д</div>
-                        <div>
-                            <div class="review-name">Дмитрий В.</div>
-                            <div class="review-car">Audi Q7, 2020</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Оклеил весь перед плёнкой. Работа ювелирная, ни одного пузыря, ни одной складки. Видно, что парни любят своё дело. Рекомендую всем!"</p>
+                    <p class="review-text">"Оформил абонемент Prestige полгода назад. Автомобиль всегда в идеальном состоянии, без очередей и ожидания. Отдельное спасибо персональному менеджеру Дмитрию за внимание к деталям."</p>
                     <div class="review-author">
                         <div class="review-avatar">М</div>
                         <div>
-                            <div class="review-name">Михаил С.</div>
-                            <div class="review-car">Mercedes GLE, 2022</div>
+                            <div class="review-name">Михаил В.</div>
+                            <div class="review-car">Mercedes-Benz GLE 450, 2022</div>
                         </div>
                     </div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Делали химчистку после собаки — салон был в шерсти и пятнах. Думал, придётся менять сиденья. Ребята вернули всё в идеал. Жена не поверила!"</p>
+                    <p class="review-text">"Оклеил весь перед полиуретановой плёнкой XPEL. Работа выполнена безупречно — ни одного пузыря, идеальная подгонка по всем элементам. Гарантийный сертификат на 10 лет — приятный бонус."</p>
                     <div class="review-author">
-                        <div class="review-avatar">И</div>
+                        <div class="review-avatar">Д</div>
                         <div>
-                            <div class="review-name">Игорь П.</div>
-                            <div class="review-car">Toyota Camry, 2019</div>
+                            <div class="review-name">Дмитрий С.</div>
+                            <div class="review-car">Porsche 911 Carrera S, 2023</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Привозила автомобиль после длительной эксплуатации — салон был в плачевном состоянии. После полной химчистки с разбором сидений машина выглядит как новая. Профессиональный подход на каждом этапе."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">Е</div>
+                        <div>
+                            <div class="review-name">Елена П.</div>
+                            <div class="review-car">Audi Q8, 2021</div>
                         </div>
                     </div>
                 </div>
@@ -1652,7 +1721,7 @@
         <div class="container">
             <div class="section-head reveal">
                 <div class="section-label">Контакты</div>
-                <h2 class="section-title">Заезжай <span class="accent">в гости</span></h2>
+                <h2 class="section-title">Запишитесь на <span class="accent">визит</span></h2>
             </div>
             <div class="contact-grid">
                 <div class="contact-info reveal">
@@ -1660,38 +1729,38 @@
                     <div class="contact-item">
                         <svg class="contact-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         <div>
-                            <div class="contact-item-label">Адрес</div>
-                            <div class="contact-item-value">Москва, ул. Гаражная, 15<br>Ворота со стороны двора</div>
+                            <div class="contact-item-label">Адрес мастерской</div>
+                            <div class="contact-item-value">Москва, ул. Автозаводская, 23к2<br>Въезд со стороны двора</div>
                         </div>
                     </div>
                     <div class="contact-item">
                         <svg class="contact-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                         <div>
                             <div class="contact-item-label">Телефон</div>
-                            <div class="contact-item-value">+7 (999) 123-45-67</div>
+                            <div class="contact-item-value">+7 (495) 123-45-67</div>
                         </div>
                     </div>
                     <div class="contact-item">
                         <svg class="contact-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <div>
-                            <div class="contact-item-label">Режим работы</div>
-                            <div class="contact-item-value">Ежедневно 10:00 — 22:00<br>Без выходных</div>
+                            <div class="contact-item-label">Часы работы</div>
+                            <div class="contact-item-value">Ежедневно 10:00 — 22:00<br>Без выходных и праздников</div>
                         </div>
                     </div>
                     <div class="contact-item">
                         <svg class="contact-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         <div>
                             <div class="contact-item-label">Email</div>
-                            <div class="contact-item-value">hello@favorit-detail.ru</div>
+                            <div class="contact-item-value">info@favorit-detailing.ru</div>
                         </div>
                     </div>
                 </div>
                 <form class="form reveal" id="contactForm" onsubmit="submitForm(event)">
-                    <h3 style="font-family: var(--font-h); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 25px;">Оставить заявку</h3>
+                    <h3 style="font-family: var(--font-h); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 0.05em;">Оставить заявку</h3>
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Имя</label>
-                            <input type="text" class="form-input" required placeholder="Как к тебе обращаться?">
+                            <label class="form-label">Ваше имя</label>
+                            <input type="text" class="form-input" required placeholder="Как к вам обращаться?">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Телефон</label>
@@ -1699,31 +1768,31 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Марка и модель авто</label>
-                        <input type="text" class="form-input" placeholder="Например, BMW X5">
+                        <label class="form-label">Марка и модель автомобиля</label>
+                        <input type="text" class="form-input" placeholder="Например, BMW X5 M50d">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Что нужно сделать?</label>
+                        <label class="form-label">Интересующая услуга</label>
                         <select class="form-select">
                             <option>Керамическое покрытие</option>
-                            <option>Полировка кузова</option>
-                            <option>Химчистка салона</option>
-                            <option>Оклейка плёнкой</option>
+                            <option>Восстановительная полировка</option>
+                            <option>Детейлинг химчистка</option>
+                            <option>Оклейка полиуретановой плёнкой</option>
                             <option>Детейлинг-мойка</option>
-                            <option>Реставрация фар</option>
-                            <option>Абонемент</option>
-                            <option>Другое / Консультация</option>
+                            <option>Реставрация оптики</option>
+                            <option>Абонемент на обслуживание</option>
+                            <option>Консультация специалиста</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Комментарий</label>
-                        <textarea class="form-textarea" placeholder="Расскажи подробнее, что хочешь сделать"></textarea>
+                        <textarea class="form-textarea" placeholder="Опишите состояние автомобиля или пожелания"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         Отправить заявку
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
-                    <p class="form-note">Нажимая кнопку, ты соглашаешься с обработкой персональных данных</p>
+                    <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
                 </form>
             </div>
         </div>
@@ -1732,14 +1801,16 @@
     <!-- MARQUEE BOTTOM -->
     <div class="marquee">
         <div class="marquee-track">
-            <span>Запишись сегодня — получи воск в подарок</span>
+            <span>Запишитесь сегодня — воск в подарок</span>
             <span>Работаем без выходных</span>
-            <span>Бесплатный кофе пока ждёшь</span>
+            <span>Комфортная зона ожидания</span>
             <span>Гарантия на все работы</span>
-            <span>Запишись сегодня — получи воск в подарок</span>
+            <span>Бесплатная консультация</span>
+            <span>Запишитесь сегодня — воск в подарок</span>
             <span>Работаем без выходных</span>
-            <span>Бесплатный кофе пока ждёшь</span>
+            <span>Комфортная зона ожидания</span>
             <span>Гарантия на все работы</span>
+            <span>Бесплатная консультация</span>
         </div>
     </div>
 
@@ -1749,15 +1820,15 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="logo" style="font-size: 2rem;">FAVORIT<span>.</span></div>
-                    <p>Гараж с душой. Делаем тачки красивыми с 2019 года. Без пафоса, но с любовью.</p>
+                    <p>Премиальное ателье детейлинга в Москве. Создаём безупречный вид вашего автомобиля с 2019 года.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Навигация</h4>
                     <ul>
-                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#about">О мастерской</a></li>
                         <li><a href="#services">Услуги</a></li>
                         <li><a href="#calculator">Калькулятор</a></li>
-                        <li><a href="#gallery">Работы</a></li>
+                        <li><a href="#gallery">Портфолио</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1772,9 +1843,9 @@
                 <div class="footer-col">
                     <h4>Контакты</h4>
                     <ul>
-                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
-                        <li><a href="mailto:hello@favorit-detail.ru">hello@favorit-detail.ru</a></li>
-                        <li>Москва, ул. Гаражная, 15</li>
+                        <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@favorit-detailing.ru">info@favorit-detailing.ru</a></li>
+                        <li>Москва, ул. Автозаводская, 23к2</li>
                     </ul>
                 </div>
             </div>
@@ -1798,7 +1869,7 @@
     <!-- MOBILE CTA -->
     <div class="mobile-cta">
         <button class="btn btn-primary" onclick="openModal()">
-            Записаться
+            Записаться на сервис
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
     </div>
@@ -1811,24 +1882,24 @@
             </button>
             <div id="modalForm">
                 <h3>Запись на сервис</h3>
-                <p>Оставь контакты — перезвоним в течение 15 минут</p>
+                <p>Оставьте контакты — наш менеджер свяжется с вами в течение 15 минут</p>
                 <form onsubmit="submitModal(event)">
                     <div class="form-group">
-                        <label class="form-label">Имя</label>
-                        <input type="text" class="form-input" required placeholder="Как к тебе обращаться?">
+                        <label class="form-label">Ваше имя</label>
+                        <input type="text" class="form-input" required placeholder="Как к вам обращаться?">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Телефон</label>
                         <input type="tel" class="form-input" required placeholder="+7 (___) ___-__-__">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Что нужно?</label>
+                        <label class="form-label">Интересующая услуга</label>
                         <select class="form-select">
-                            <option>Керамика</option>
+                            <option>Керамическое покрытие</option>
                             <option>Полировка</option>
                             <option>Химчистка</option>
-                            <option>Оклейка</option>
-                            <option>Мойка</option>
+                            <option>Оклейка плёнкой</option>
+                            <option>Детейлинг-мойка</option>
                             <option>Абонемент</option>
                             <option>Консультация</option>
                         </select>
@@ -1840,8 +1911,8 @@
             </div>
             <div class="success-msg" id="successMsg">
                 <div class="success-icon">✓</div>
-                <h3>Заявка принята!</h3>
-                <p style="margin-top: 15px;">Перезвоним в течение 15 минут.<br>А пока — можешь полистать наши работы.</p>
+                <h3>Заявка принята</h3>
+                <p style="margin-top: 15px;">Наш менеджер свяжется с вами<br>в течение 15 минут</p>
                 <button class="btn btn-outline" style="margin-top: 20px;" onclick="closeModal()">Закрыть</button>
             </div>
         </div>
@@ -1861,7 +1932,7 @@
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
-        document.querySelectorAll('a, button, .calc-car, .calc-service, .ba-thumb, .sub-card, .gallery-item').forEach(el => {
+        document.querySelectorAll('a, button, .calc-car, .calc-service, .ba-thumb, .sub-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
@@ -1958,13 +2029,12 @@
                 });
                 if (calcMult > 1) {
                     const carType = document.querySelector('.calc-car.active .calc-car-name').textContent;
-                    html += `<div class="calc-breakdown-item" style="color: var(--accent);"><span>Коэф. ${carType}</span><span>×${calcMult}</span></div>`;
+                    html += `<div class="calc-breakdown-item" style="color: var(--accent);"><span>Коэффициент ${carType}</span><span>×${calcMult}</span></div>`;
                 }
             }
             
             calcBreakdown.innerHTML = html;
             
-            // Плавная анимация числа
             const currentTotal = parseInt(calcTotal.textContent.replace(/\s/g, '')) || 0;
             animateNumber(calcTotal, currentTotal, total, 400);
         }
@@ -2055,7 +2125,7 @@
             const form = e.target;
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '✓ Заявка отправлена!';
+            btn.innerHTML = '✓ Заявка отправлена';
             btn.style.background = '#4CAF50';
             setTimeout(() => {
                 form.reset();
@@ -2064,7 +2134,7 @@
             }, 3000);
         }
 
-        // === SMOOTH SCROLL FIX ===
+        // === SMOOTH SCROLL ===
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const target = document.querySelector(this.getAttribute('href'));
